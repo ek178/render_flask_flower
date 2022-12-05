@@ -46,7 +46,7 @@ def open(ind=-1):
         res.append({"id":flower.id,"name":flower.name,"color":flower.color})
     return res
 
-@app.route('/new', methods = ['POST'])
+@app.route('/new', methods = ['GET','POST'])
 def new():
     request_data = request.get_json()
     name= request_data["name"]
