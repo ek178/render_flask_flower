@@ -46,7 +46,7 @@ def open(ind=-1):
         res.append({"id":flower.id,"name":flower.name,"color":flower.color})
     return res
 
-@app.route('/new', methods = ['GET','POST'])
+@app.route('/new/', methods = ['GET','POST'])
 def new():
     request_data = request.get_json()
     name= request_data["name"]
@@ -57,7 +57,7 @@ def new():
     db.session.commit()
     return "a new rcord was create"
 
-@app.route("/del/<ind>", methods=['DELETE'])
+@app.route("/del/<ind>/", methods=['DELETE'])
 def del_flower(ind=-1):
         flower=Flower.query.get(int(ind))
         if flower:
@@ -66,7 +66,7 @@ def del_flower(ind=-1):
             return f"the {flower.name} was deleted"
         return f"no such student"
 
-@app.route("/upd/<ind>", methods=['PUT'])
+@app.route("/upd/<ind>/", methods=['PUT'])
 def upd_flower(ind=-1):
     if int(ind) > -1:
         data = request.json
